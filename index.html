@@ -3,15 +3,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
   :root{
-    --paper:#F3F5F3;
-    --panel:#E9F0ED;
-    --ink:#1B2A28;
-    --ink-soft:#52645F;
-    --ink-faint:#83958F;
-    --line:#D9DFDC;
-    --accent:#1F6F5C;
-    --accent-strong:#154F41;
-    --accent-soft:#DCEAE4;
+    --paper:#F4F8FF;
+    --panel:#E8F1FE;
+    --ink:#12203A;
+    --ink-soft:#4A5E7D;
+    --ink-faint:#7F92B0;
+    --line:#D6E2F5;
+    --accent:#0A6FDB;
+    --accent-strong:#0850A8;
+    --accent-soft:#DCEBFF;
     --font-display:'Bai Jamjuree','Noto Sans Thai',sans-serif;
     --font-body:'IBM Plex Sans Thai','Noto Sans Thai',system-ui,sans-serif;
     --font-mono:'IBM Plex Mono','IBM Plex Sans Thai',ui-monospace,monospace;
@@ -19,27 +19,27 @@
 
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --paper:#101615;
-      --panel:#152020;
-      --ink:#E7EEEC;
-      --ink-soft:#A8B8B3;
-      --ink-faint:#6C7D78;
-      --line:#263230;
-      --accent:#4FC1A4;
-      --accent-strong:#7EDCC0;
-      --accent-soft:#1B2E29;
+      --paper:#0B1220;
+      --panel:#101A2E;
+      --ink:#E6EEFB;
+      --ink-soft:#A6B7D4;
+      --ink-faint:#6B7FA0;
+      --line:#22304D;
+      --accent:#4DA3FF;
+      --accent-strong:#8CC4FF;
+      --accent-soft:#142544;
     }
   }
   :root[data-theme="dark"]{
-    --paper:#101615;
-    --panel:#152020;
-    --ink:#E7EEEC;
-    --ink-soft:#A8B8B3;
-    --ink-faint:#6C7D78;
-    --line:#263230;
-    --accent:#4FC1A4;
-    --accent-strong:#7EDCC0;
-    --accent-soft:#1B2E29;
+    --paper:#0B1220;
+    --panel:#101A2E;
+    --ink:#E6EEFB;
+    --ink-soft:#A6B7D4;
+    --ink-faint:#6B7FA0;
+    --line:#22304D;
+    --accent:#4DA3FF;
+    --accent-strong:#8CC4FF;
+    --accent-soft:#142544;
   }
 
   *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
@@ -88,24 +88,20 @@
   .sidebar:hover::before{ opacity:1; }
   .id-block{ display:flex; flex-direction:column; align-items:flex-start; gap:.9rem; }
   .monogram{
-    width:56px; height:56px;
-    display:flex; align-items:center; justify-content:center;
-    border-radius:10px;
+    width:100%; aspect-ratio:1/1; height:auto;
+    display:block;
+    border-radius:14px;
     background:var(--accent-soft);
-    color:var(--accent-strong);
-    font-family:var(--font-mono);
-    font-weight:600;
-    font-size:1.1rem;
-    letter-spacing:.03em;
+    object-fit:cover;
   }
   .id-block h1{
     font-family:var(--font-display);
     font-weight:700;
-    font-size:1.65rem;
+    font-size:1.1rem;
     line-height:1.2;
     margin:0;
     color:var(--ink);
-    text-wrap:balance;
+    white-space:nowrap;
   }
   .id-block .en-name{
     font-family:var(--font-mono);
@@ -113,7 +109,8 @@
     letter-spacing:.08em;
     text-transform:uppercase;
     color:var(--ink-faint);
-    margin:.3rem 0 0;
+    margin:-.65rem 0 0;
+    white-space:nowrap;
   }
   .id-block .tagline{ font-size:.92rem; color:var(--ink-soft); margin:.5rem 0 0; }
 
@@ -192,7 +189,7 @@
   }
   .main section{ margin-bottom:2.4rem; }
   .main section:last-child{ margin-bottom:0; }
-  .main .eyebrow{ margin-bottom:.35rem; }
+  .main .eyebrow{ margin-bottom:.9rem; }
 
   .profile p{ max-width:58ch; color:var(--ink); margin:0; }
 
@@ -279,13 +276,15 @@
     .side-block{ padding-top:1rem; }
     .id-block{ gap:.5rem; }
     .id-block .tagline{ margin-top:.3rem; }
-    .monogram{ width:40px; height:40px; font-size:.85rem; }
+    .monogram{ width:100%; }
+    .id-block h1{ font-size:.92rem; }
+    .id-block .en-name{ font-size:.6rem; letter-spacing:.04em; margin-top:-.3rem; }
     .contact-list{ gap:.35rem; }
     .skill-group{ margin-bottom:.55rem; }
     .main{ padding:1.1rem 1.3rem 1rem 1.3rem; }
     h2.section-title{ margin-bottom:.5rem; }
     .main section{ margin-bottom:1rem; }
-    .main .eyebrow{ margin-bottom:.15rem; }
+    .main .eyebrow{ margin-bottom:.5rem; }
     .job{ margin-bottom:.85rem; gap:.9rem; break-inside:avoid; }
     .job ul{ gap:.2rem; }
     .job .org{ margin:.05rem 0 .3rem; }
@@ -302,10 +301,10 @@
 
     <aside class="sidebar">
       <div class="id-block">
-        <div class="monogram">RH</div>
+        <img class="monogram" src="profile.png" alt="รัชต์ภาคย์ หันจางสิทธิ์">
         <h1>รัชต์ภาคย์ หันจางสิทธิ์</h1>
         <p class="en-name">Ratchaphak Hangangsit</p>
-        <p class="tagline">นักพัฒนาเว็บแบบ Full-Stack ถนัดฝั่ง Backend</p>
+        <p class="tagline">Full-Stack Developer</p>
       </div>
 
       <div class="side-block">
@@ -383,7 +382,6 @@
     <main class="main">
       <section class="profile">
         <p class="eyebrow">Profile</p>
-        <h2 class="section-title">สรุปโปรไฟล์</h2>
         <p>
           เริ่มต้นสายงานจากฝ่ายผลิต ก่อนขยับมาสาย IT Support และผันตัวมาเป็นนักพัฒนาเว็บแบบ Full-Stack
           ถนัดฝั่ง Backend เป็นพิเศษ ทั้งออกแบบ API ดูแลฐานข้อมูล PostgreSQL/MySQL
@@ -395,7 +393,6 @@
 
       <section>
         <p class="eyebrow">Experience</p>
-        <h2 class="section-title">ประสบการณ์ทำงาน</h2>
 
         <div class="job">
           <div class="when">2025 — <span class="now">ปัจจุบัน</span></div>

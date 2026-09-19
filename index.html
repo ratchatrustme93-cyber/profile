@@ -1,300 +1,12 @@
 <title>รัชต์ภาคย์ หันจางสิทธิ์</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-<style>
-  :root{
-    --paper:#F4F8FF;
-    --panel:#E8F1FE;
-    --ink:#12203A;
-    --ink-soft:#4A5E7D;
-    --ink-faint:#7F92B0;
-    --line:#D6E2F5;
-    --accent:#0A6FDB;
-    --accent-strong:#0850A8;
-    --accent-soft:#DCEBFF;
-    --font-display:'Bai Jamjuree','Noto Sans Thai',sans-serif;
-    --font-body:'IBM Plex Sans Thai','Noto Sans Thai',system-ui,sans-serif;
-    --font-mono:'IBM Plex Mono','IBM Plex Sans Thai',ui-monospace,monospace;
-  }
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
 
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --paper:#0B1220;
-      --panel:#101A2E;
-      --ink:#E6EEFB;
-      --ink-soft:#A6B7D4;
-      --ink-faint:#6B7FA0;
-      --line:#22304D;
-      --accent:#4DA3FF;
-      --accent-strong:#8CC4FF;
-      --accent-soft:#142544;
-    }
-  }
-  :root[data-theme="dark"]{
-    --paper:#0B1220;
-    --panel:#101A2E;
-    --ink:#E6EEFB;
-    --ink-soft:#A6B7D4;
-    --ink-faint:#6B7FA0;
-    --line:#22304D;
-    --accent:#4DA3FF;
-    --accent-strong:#8CC4FF;
-    --accent-soft:#142544;
-  }
-
-  *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
-  @keyframes rise-in{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:translateY(0); } }
-
-  html{ scroll-behavior:smooth; }
-  body{ background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.6; }
-
-  /* scroll progress — web only, stripped for print */
-  .progress-track{ position:fixed; top:0; left:0; width:100%; height:3px; background:var(--line); z-index:50; }
-  .progress-fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--accent),var(--accent-strong)); transform-origin:left; }
-  .topbar{ height:6px; background:linear-gradient(90deg,var(--accent),var(--accent-strong)); width:100%; margin-top:3px; }
-
-  .sheet{ max-width:900px; margin:0 auto; }
-
-  .resume-grid{
-    display:grid;
-    grid-template-columns:260px 1fr;
-    align-items:stretch;
-    animation:rise-in .5s ease-out both;
-  }
-
-  /* ---------- sidebar ---------- */
-  .sidebar{
-    position:relative;
-    isolation:isolate;
-    overflow:hidden;
-    background:var(--panel);
-    border-right:1px solid var(--line);
-    padding:2.75rem 1.9rem 3rem;
-    display:flex;
-    flex-direction:column;
-    gap:2.1rem;
-    min-height:100%;
-  }
-  .sidebar::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:-1;
-    background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 65%);
-    opacity:0;
-    transition:opacity .3s ease;
-  }
-  .sidebar:hover::before{ opacity:1; }
-  .id-block{ display:flex; flex-direction:column; align-items:flex-start; gap:.9rem; }
-  .monogram{
-    width:100%; aspect-ratio:1/1; height:auto;
-    display:block;
-    border-radius:14px;
-    background:var(--accent-soft);
-    object-fit:cover;
-  }
-  .id-block h1{
-    font-family:var(--font-display);
-    font-weight:700;
-    font-size:1.1rem;
-    line-height:1.2;
-    margin:0;
-    color:var(--ink);
-    white-space:nowrap;
-  }
-  .id-block .en-name{
-    font-family:var(--font-mono);
-    font-size:.72rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-faint);
-    margin:-.65rem 0 0;
-    white-space:nowrap;
-  }
-  .id-block .tagline{ font-size:.92rem; color:var(--ink-soft); margin:.5rem 0 0; }
-
-  .side-block{ padding-top:1.9rem; border-top:1px solid var(--line); }
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:.7rem;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin:0 0 .8rem;
-  }
-
-  .contact-list{ display:flex; flex-direction:column; gap:.6rem; }
-  .contact-list .row{
-    display:flex; align-items:flex-start; gap:.5rem;
-    font-family:var(--font-mono);
-    font-size:.78rem;
-    color:var(--ink-soft);
-    line-height:1.45;
-    overflow-wrap:anywhere;
-  }
-  .contact-list svg{ flex:none; width:14px; height:14px; margin-top:.15rem; color:var(--ink-faint); }
-  .contact-list a{ color:var(--ink-soft); text-decoration:none; border-bottom:1px solid var(--line); transition:color .15s ease, border-color .15s ease; }
-  .contact-list a:hover, .contact-list a:focus-visible{ color:var(--accent-strong); border-color:var(--accent); }
-  .contact-list .num{ font-variant-numeric:tabular-nums; }
-
-  .skill-group{ margin-bottom:1.1rem; }
-  .skill-group:last-child{ margin-bottom:0; }
-  .skill-group .cat{
-    font-family:var(--font-mono);
-    font-size:.76rem;
-    color:var(--ink-soft);
-    margin:0 0 .5rem;
-  }
-  .skill-group .cat .star{ color:var(--accent-strong); }
-  .tags{ display:flex; flex-wrap:wrap; gap:.4rem; }
-  .tag{
-    font-family:var(--font-mono);
-    font-size:.74rem;
-    padding:.28rem .55rem;
-    border-radius:4px;
-    background:var(--accent-soft);
-    color:var(--accent-strong);
-    border:1px solid transparent;
-    transition:border-color .15s ease, transform .15s ease;
-  }
-  .tag:hover{ border-color:var(--accent); transform:translateY(-1px); }
-
-  .edu .org{ font-family:var(--font-display); font-weight:600; font-size:.95rem; color:var(--ink); margin:0; }
-  .edu .degree{ font-size:.82rem; color:var(--ink-soft); margin:.4rem 0; line-height:1.5; }
-  .edu .note{ font-size:.76rem; color:var(--ink-faint); line-height:1.5; }
-  .status-pill{
-    display:inline-block;
-    font-family:var(--font-mono);
-    font-size:.7rem;
-    letter-spacing:.04em;
-    text-transform:uppercase;
-    color:var(--accent-strong);
-    background:var(--accent-soft);
-    border-radius:4px;
-    padding:.25rem .55rem;
-    margin-top:.6rem;
-  }
-
-  /* ---------- main column ---------- */
-  .main{ padding:2.75rem 2.25rem 3rem clamp(1.75rem,4vw,2.75rem); }
-
-  h2.section-title{
-    font-family:var(--font-display);
-    font-weight:600;
-    font-size:1.35rem;
-    margin:0 0 1.1rem;
-    color:var(--ink);
-    text-wrap:balance;
-  }
-  .main section{ margin-bottom:2.4rem; }
-  .main section:last-child{ margin-bottom:0; }
-  .main .eyebrow{ margin-bottom:.9rem; }
-
-  .profile p{ max-width:58ch; color:var(--ink); margin:0; }
-
-  /* ---------- experience ---------- */
-  .job{ display:grid; grid-template-columns:112px 1fr; gap:1.25rem; margin-bottom:1.9rem; }
-  .job:last-child{ margin-bottom:0; }
-  .job .when{
-    font-family:var(--font-mono);
-    font-size:.76rem;
-    color:var(--ink-faint);
-    line-height:1.5;
-    font-variant-numeric:tabular-nums;
-    padding-top:.15rem;
-  }
-  .job .when .now{ color:var(--accent-strong); font-weight:600; }
-  .job .what{ position:relative; border-left:2px solid var(--line); padding-left:1.1rem; }
-  .job .what::before{
-    content:""; position:absolute; left:-5px; top:.3rem;
-    width:8px; height:8px; border-radius:50%; background:var(--accent);
-  }
-  .job .role{ font-family:var(--font-display); font-weight:600; font-size:1.05rem; color:var(--ink); margin:0; }
-  .job .org{ font-size:.86rem; color:var(--ink-soft); margin:.15rem 0 .6rem; }
-  .job ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:.4rem; }
-  .job li{ font-size:.92rem; color:var(--ink); padding-left:1rem; position:relative; }
-  .job li::before{ content:"–"; position:absolute; left:0; top:0; color:var(--ink-faint); }
-
-  footer{
-    display:flex; justify-content:space-between; align-items:center; gap:1rem;
-    padding:1.5rem clamp(1.75rem,4vw,2.75rem) 2rem;
-    border-top:1px solid var(--line);
-    font-family:var(--font-mono); font-size:.75rem; color:var(--ink-faint);
-    grid-column:1 / -1;
-  }
-  .print-btn{
-    font-family:var(--font-mono); font-size:.75rem; color:var(--accent-strong);
-    background:var(--accent-soft); border:1px solid transparent; border-radius:4px;
-    padding:.4rem .7rem; cursor:pointer; transition:border-color .15s ease;
-  }
-  .print-btn:hover, .print-btn:focus-visible{ border-color:var(--accent); }
-
-  /* ---------- copy-to-clipboard ---------- */
-  .copy-btn{
-    all:unset;
-    cursor:pointer;
-    font:inherit;
-    color:var(--ink-soft);
-    border-bottom:1px dashed var(--line);
-    transition:color .15s ease, border-color .15s ease;
-  }
-  .copy-btn:hover, .copy-btn:focus-visible{ color:var(--accent-strong); border-color:var(--accent); }
-  .row{ position:relative; }
-  .copy-toast{
-    position:absolute;
-    left:0; top:-1.6rem;
-    font-family:var(--font-mono);
-    font-size:.68rem;
-    color:var(--accent-strong);
-    background:var(--accent-soft);
-    padding:.2rem .5rem;
-    border-radius:4px;
-    opacity:0;
-    transform:translateY(4px);
-    transition:opacity .18s ease, transform .18s ease;
-    pointer-events:none;
-    white-space:nowrap;
-  }
-  .copy-toast.show{ opacity:1; transform:translateY(0); }
-
-  @media (max-width:720px){
-    .resume-grid{ grid-template-columns:1fr; }
-    .sidebar{ border-right:none; border-bottom:1px solid var(--line); }
-    .job{ grid-template-columns:1fr; gap:.5rem; }
-  }
-
-  @media print{
-    html{ font-size:11px; }
-    body{ background:#fff; line-height:1.35; }
-    .print-btn{ display:none; }
-    .progress-track{ display:none; }
-    .sidebar::before{ display:none; }
-    .copy-toast{ display:none; }
-    .resume-grid{ grid-template-columns:200px 1fr; animation:none; }
-    .sidebar{ padding:1.1rem 1.2rem 1.3rem; gap:1.1rem; }
-    .side-block{ padding-top:1rem; }
-    .id-block{ gap:.5rem; }
-    .id-block .tagline{ margin-top:.3rem; }
-    .monogram{ width:100%; }
-    .id-block h1{ font-size:.92rem; }
-    .id-block .en-name{ font-size:.6rem; letter-spacing:.04em; margin-top:-.3rem; }
-    .contact-list{ gap:.35rem; }
-    .skill-group{ margin-bottom:.55rem; }
-    .main{ padding:1.1rem 1.3rem 1rem 1.3rem; }
-    h2.section-title{ margin-bottom:.5rem; }
-    .main section{ margin-bottom:1rem; }
-    .main .eyebrow{ margin-bottom:.5rem; }
-    .job{ margin-bottom:.85rem; gap:.9rem; break-inside:avoid; }
-    .job ul{ gap:.2rem; }
-    .job .org{ margin:.05rem 0 .3rem; }
-    .skill-group, .edu{ break-inside:avoid; }
-    footer{ padding:.6rem 1.3rem .3rem; }
-  }
-  @page{ margin:.9cm; }
-</style>
-
-<div class="progress-track"><div class="progress-fill" id="scroll-progress"></div></div>
+<div class="progress-track">
+  <div class="progress-fill" id="scroll-progress"></div>
+</div>
 <div class="sheet">
   <div class="topbar"></div>
   <div class="resume-grid">
@@ -311,25 +23,46 @@
         <p class="eyebrow">Contact</p>
         <div class="contact-list">
           <span class="row">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0-.6.4-1 1-1h3l2 5-2 1c1 2.5 2.5 4 5 5l1-2 5 2v3c0 .6-.4 1-1 1C9.5 20 4 14.5 4 5Z"/></svg>
-            <button type="button" class="copy-btn" data-copy="091-796-4936"><span class="num">091-796-4936</span></button>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4 5c0-.6.4-1 1-1h3l2 5-2 1c1 2.5 2.5 4 5 5l1-2 5 2v3c0 .6-.4 1-1 1C9.5 20 4 14.5 4 5Z" />
+            </svg>
+            <button type="button" class="copy-btn" data-copy="091-796-4936"><span
+                class="num">091-796-4936</span></button>
             <span class="copy-toast">คัดลอกแล้ว</span>
           </span>
           <span class="row">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M4 6l8 7 8-7"/></svg>
-            <button type="button" class="copy-btn" data-copy="ratcha.trustme93@gmail.com">ratcha.trustme93@gmail.com</button>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4 5h16v14H4z" />
+              <path d="M4 6l8 7 8-7" />
+            </svg>
+            <button type="button" class="copy-btn"
+              data-copy="ratcha.trustme93@gmail.com">ratcha.trustme93@gmail.com</button>
             <span class="copy-toast">คัดลอกแล้ว</span>
           </span>
           <span class="row">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z" />
+              <circle cx="12" cy="9.5" r="2.3" />
+            </svg>
             Bangkok, Thailand
           </span>
           <span class="row">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-2.85 17.54c.45.08.62-.2.62-.43v-1.7c-2.53.55-3.06-1.15-3.06-1.15-.42-1.05-1.02-1.33-1.02-1.33-.83-.57.06-.55.06-.55.92.06 1.4.94 1.4.94.82 1.4 2.14 1 2.66.76.08-.6.32-1 .58-1.23-2-.23-4.1-1-4.1-4.44 0-.98.35-1.78.93-2.4-.1-.23-.4-1.16.1-2.42 0 0 .76-.24 2.5.93a8.6 8.6 0 0 1 4.55 0c1.74-1.17 2.5-.93 2.5-.93.5 1.26.2 2.19.1 2.42.58.62.93 1.42.93 2.4 0 3.45-2.1 4.2-4.1 4.44.33.28.6.84.6 1.7v2.5c0 .23.17.51.62.43A9 9 0 0 0 12 3Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M12 3a9 9 0 0 0-2.85 17.54c.45.08.62-.2.62-.43v-1.7c-2.53.55-3.06-1.15-3.06-1.15-.42-1.05-1.02-1.33-1.02-1.33-.83-.57.06-.55.06-.55.92.06 1.4.94 1.4.94.82 1.4 2.14 1 2.66.76.08-.6.32-1 .58-1.23-2-.23-4.1-1-4.1-4.44 0-.98.35-1.78.93-2.4-.1-.23-.4-1.16.1-2.42 0 0 .76-.24 2.5.93a8.6 8.6 0 0 1 4.55 0c1.74-1.17 2.5-.93 2.5-.93.5 1.26.2 2.19.1 2.42.58.62.93 1.42.93 2.4 0 3.45-2.1 4.2-4.1 4.44.33.28.6.84.6 1.7v2.5c0 .23.17.51.62.43A9 9 0 0 0 12 3Z" />
+            </svg>
             <a href="https://github.com/ratchatrustme93-cyber" target="_blank" rel="noopener">@ratchatrustme93-cyber</a>
           </span>
           <span class="row">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-2.85 17.54c.45.08.62-.2.62-.43v-1.7c-2.53.55-3.06-1.15-3.06-1.15-.42-1.05-1.02-1.33-1.02-1.33-.83-.57.06-.55.06-.55.92.06 1.4.94 1.4.94.82 1.4 2.14 1 2.66.76.08-.6.32-1 .58-1.23-2-.23-4.1-1-4.1-4.44 0-.98.35-1.78.93-2.4-.1-.23-.4-1.16.1-2.42 0 0 .76-.24 2.5.93a8.6 8.6 0 0 1 4.55 0c1.74-1.17 2.5-.93 2.5-.93.5 1.26.2 2.19.1 2.42.58.62.93 1.42.93 2.4 0 3.45-2.1 4.2-4.1 4.44.33.28.6.84.6 1.7v2.5c0 .23.17.51.62.43A9 9 0 0 0 12 3Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M12 3a9 9 0 0 0-2.85 17.54c.45.08.62-.2.62-.43v-1.7c-2.53.55-3.06-1.15-3.06-1.15-.42-1.05-1.02-1.33-1.02-1.33-.83-.57.06-.55.06-.55.92.06 1.4.94 1.4.94.82 1.4 2.14 1 2.66.76.08-.6.32-1 .58-1.23-2-.23-4.1-1-4.1-4.44 0-.98.35-1.78.93-2.4-.1-.23-.4-1.16.1-2.42 0 0 .76-.24 2.5.93a8.6 8.6 0 0 1 4.55 0c1.74-1.17 2.5-.93 2.5-.93.5 1.26.2 2.19.1 2.42.58.62.93 1.42.93 2.4 0 3.45-2.1 4.2-4.1 4.44.33.28.6.84.6 1.7v2.5c0 .23.17.51.62.43A9 9 0 0 0 12 3Z" />
+            </svg>
             <a href="https://github.com/tonandton" target="_blank" rel="noopener">@tonandton</a>
           </span>
         </div>
@@ -373,7 +106,8 @@
       <div class="side-block edu">
         <p class="eyebrow">Education</p>
         <p class="org">มหาวิทยาลัยสุโขทัยธรรมาธิราช</p>
-        <p class="degree">ปริญญาตรี วิทยาการคอมพิวเตอร์ (แขนงความปลอดภัยทางไซเบอร์) · B.Sc. Computer Science — Cyber Security</p>
+        <p class="degree">ปริญญาตรี วิทยาการคอมพิวเตอร์ (แขนงความปลอดภัยทางไซเบอร์) · B.Sc. Computer Science — Cyber
+          Security</p>
         <p class="note">ระบบการศึกษาทางไกล (Distance Learning) — Sukhothai Thammathirat Open University</p>
         <span class="status-pill">กำลังศึกษา</span>
       </div>
@@ -398,7 +132,7 @@
           <div class="when">2025 — <span class="now">ปัจจุบัน</span></div>
           <div class="what">
             <p class="role">Software Web Developer / Supervisor</p>
-            <p class="org">Smilebox Clinic</p>
+            <p class="org">Smilebox Dental Clinic</p>
             <ul>
               <li>คุมทีมพัฒนา ดูแลเว็บแอปทั้งฝั่ง Frontend และ Backend ในตำแหน่งหัวหน้างาน</li>
               <li>พัฒนาระบบ HRM, CRM, ERP และ POS ให้คลินิกทันตกรรมใช้งานจริง</li>
@@ -416,8 +150,10 @@
             <p class="role">IT Support — Digital Technology Development and Management</p>
             <p class="org">บริษัท มีสุข คอร์ปอเรชั่น (2006) จำกัด</p>
             <ul>
-              <li>ดูแลระบบ Network Infrastructure, Servers, User Accounts และสิทธิ์การเข้าถึงข้อมูลผ่าน Active Directory</li>
-              <li>พัฒนาและปรับปรุง Web Applications/Internal Tools ด้วย PERN Stack (PostgreSQL, Express.js, React, Node.js)</li>
+              <li>ดูแลระบบ Network Infrastructure, Servers, User Accounts และสิทธิ์การเข้าถึงข้อมูลผ่าน Active Directory
+              </li>
+              <li>พัฒนาและปรับปรุง Web Applications/Internal Tools ด้วย PERN Stack (PostgreSQL, Express.js, React,
+                Node.js)</li>
               <li>ซัพพอร์ตและดูแลระบบ MLM, ERP, HRM และ E-commerce ขององค์กร</li>
               <li>อบรมและให้คำปรึกษาด้าน IT แก่บุคลากร รวมถึงดูแลระบบ IT Asset Management และเอกสารเทคนิค</li>
               <li>วิเคราะห์ความต้องการของผู้ใช้งาน และเสนอแนวทางแก้ปัญหาด้านเทคโนโลยีที่เหมาะกับองค์กร</li>
@@ -447,8 +183,10 @@
             <p class="org">บริษัท มีสุข คอร์ปอเรชั่น (2006) จำกัด</p>
             <ul>
               <li>จัดทำและตรวจสอบเอกสาร/แบบแปลนโครงการโกดังให้เช่า-ห้องเช่า</li>
-              <li>ทำระบบจัดการโกดัง/ห้องเช่า พร้อมคำนวณค่าน้ำค่าไฟให้อัตโนมัติ — จุดเริ่มต้นที่ทำให้ได้ลองพัฒนาระบบจริงเป็นครั้งแรก</li>
-              <li>ดูแลและควบคุมระบบการทำงานของฝ่ายผลิต ออกแบบสูตรคำนวณด้วย Excel (ฟังก์ชันขั้นสูง + สูตรอัตโนมัติ) เพื่อเพิ่มประสิทธิภาพงาน</li>
+              <li>ทำระบบจัดการโกดัง/ห้องเช่า พร้อมคำนวณค่าน้ำค่าไฟให้อัตโนมัติ —
+                จุดเริ่มต้นที่ทำให้ได้ลองพัฒนาระบบจริงเป็นครั้งแรก</li>
+              <li>ดูแลและควบคุมระบบการทำงานของฝ่ายผลิต ออกแบบสูตรคำนวณด้วย Excel (ฟังก์ชันขั้นสูง + สูตรอัตโนมัติ)
+                เพื่อเพิ่มประสิทธิภาพงาน</li>
             </ul>
           </div>
         </div>
@@ -463,47 +201,4 @@
   </div>
 </div>
 
-<script>
-  (function(){
-    // scroll progress bar
-    var fill = document.getElementById('scroll-progress');
-    function updateProgress(){
-      var h = document.documentElement;
-      var max = h.scrollHeight - h.clientHeight;
-      var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
-      if(fill) fill.style.width = pct + '%';
-    }
-    document.addEventListener('scroll', updateProgress, { passive:true });
-    window.addEventListener('resize', updateProgress);
-    updateProgress();
-
-    // sidebar cursor spotlight
-    var sidebar = document.querySelector('.sidebar');
-    if(sidebar){
-      sidebar.addEventListener('mousemove', function(e){
-        var r = sidebar.getBoundingClientRect();
-        sidebar.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
-        sidebar.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
-      });
-    }
-
-    // click-to-copy contact info
-    document.querySelectorAll('.copy-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var text = btn.getAttribute('data-copy');
-        var toast = btn.closest('.row').querySelector('.copy-toast');
-        var done = function(){
-          if(!toast) return;
-          toast.classList.add('show');
-          clearTimeout(toast._t);
-          toast._t = setTimeout(function(){ toast.classList.remove('show'); }, 1400);
-        };
-        if(navigator.clipboard && navigator.clipboard.writeText){
-          navigator.clipboard.writeText(text).then(done).catch(done);
-        } else {
-          done();
-        }
-      });
-    });
-  })();
-</script>
+<script src="script.js"></script>

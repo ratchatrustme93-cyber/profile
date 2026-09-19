@@ -39,4 +39,23 @@
       }
     });
   });
+
+  // scroll reveal for Profile / Experience
+  var items = document.querySelectorAll('.main .profile, .main .job');
+  var lis = document.querySelectorAll('.job li');
+  document.querySelectorAll('.job').forEach(function(job){
+    job.querySelectorAll('li').forEach(function(li, i){ li.style.setProperty('--i', i); });
+  });
+  items.forEach(function(el){ if(!el.classList.contains('job')) el.classList.add('reveal'); });
+  document.querySelectorAll('.job').forEach(function(el, i){ el.classList.add('reveal'); el.style.setProperty('--d', (i % 2 ? 0.05 : 0) + 's'); });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold:0.15, rootMargin:'0px 0px -6% 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
 })();
